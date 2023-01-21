@@ -26,7 +26,7 @@ function App() {
       <h1 className="title">Welcome to your favorite manga forum</h1>
       <ul className="topics-container">
         {topics.map( topic => {
-          return <li key={topic._id}>{topic.title}</li>
+          return <li className="topic" key={topic._id}>{topic.title}</li>
         })}
       </ul>
     </div>
