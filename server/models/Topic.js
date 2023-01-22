@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const TopicSchema = new Schema({
-    title: String,
-})
+  title: String,
+});
 
-const TopicModel = mongoose.model('Topic', TopicSchema)
+const TopicModel = mongoose.model("Topic", TopicSchema);
 
-export default TopicModel
+export default TopicModel;

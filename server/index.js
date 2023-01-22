@@ -1,22 +1,27 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import mongoose from 'mongoose'
-import { createTopicController, getTopicsController } from './api/apiControllers.js'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import {
+  createTopicController,
+  deleteTopicController,
+  getTopicsController,
+} from "./api/apiControllers.js";
 
-mongoose.set('strictQuery', true)
+mongoose.set("strictQuery", true);
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-app.use(express.json())
-app.use(cors())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.get('/topics', getTopicsController)
-app.post('/topics', createTopicController)
+app.get("/topics", getTopicsController);
+app.post("/topics", createTopicController);
+app.delete("/topics/:topicId", deleteTopicController);
 
-mongoose.connect(process.env.MONGO_URL)
-.then(() => {
-    app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}...`)
-    )
-})
+mongoose.connect(process.env.MONGO_URL).then(() => {
+  app.listen(process.env.PORT, () =>
+    console.log(`listening on port ${process.env.PORT}...`)
+  );
+});
